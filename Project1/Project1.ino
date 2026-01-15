@@ -113,7 +113,7 @@ void loop() {
       noTone(BUZZER_PIN);
     }
   }
-  // Condition 3: Is distance < 5cm
+  // Condition 3: distance < 5cm
   else if (distance < 5 && distance > 0) {
     // turn off built in LED
     digitalWrite(LED_PIN, LOW);
