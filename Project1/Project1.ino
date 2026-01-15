@@ -9,9 +9,7 @@
 // define buzzer pin
 #define BUZZER_PIN  35  
 
-// Define Built-in LED pin
-// Note: On many ESP32 boards, the built-in LED is GPIO 2.
-// If GPIO 1 doesn't work, try changing this to 2.
+
 #define LED_PIN 1      
 
 // Maximum distance we want to ping for (in centimeters).
@@ -78,11 +76,10 @@ void setup() {
 }
 
 void loop() {
-  // Get the distance from the Ultrasonic Sensor
-  // Note: NewPing returns 0 if distance is greater than MAX_DISTANCE
+  //distance for ultrasonic sensor
   distance = sonar.ping_cm();
  
-  // Debugging: Print distance to Serial Monitor
+
   Serial.print("Distance: ");
   Serial.print(distance);
   Serial.println(" cm");
@@ -92,7 +89,7 @@ void loop() {
   if (distance > 10 || distance == 0) {
     // turn on built in LED
     digitalWrite(LED_PIN, HIGH);
-    noTone(BUZZER_PIN); // Ensure buzzer is silent
+    noTone(BUZZER_PIN); // buzzer becomes silent
   }
 
   else if (distance <= 10 && distance >= 5) {
@@ -113,7 +110,7 @@ void loop() {
       noTone(BUZZER_PIN);
     }
   }
-  // Condition 3: distance < 5cm
+  //distance < 5cm
   else if (distance < 5 && distance > 0) {
     // turn off built in LED
     digitalWrite(LED_PIN, LOW);
